@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Cases | Global Lingua</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;520;540;580&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <style>
+        .use-case-row {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 6rem;
+        }
+        .use-case-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .use-case-img {
+            flex: 1;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+        .use-case-content {
+            flex: 1;
+        }
+        @media (max-width: 768px) {
+            .use-case-row, .use-case-row:nth-child(even) {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+
+    <svg class="svg-defs">
+        <defs>
+            <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#E8C779" />
+                <stop offset="100%" stop-color="#A67B27" />
+            </linearGradient>
+            <linearGradient id="indigo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#5C6BC0" />
+                <stop offset="100%" stop-color="#283593" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+
+        <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M2 12H22M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Global Lingua
+            </a>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">☰</button>
+            
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home-2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="languages.html">Languages</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+                        <div class="navbar-actions">
+                <button class="icon-btn" id="theme-toggle" aria-label="Toggle Dark Mode">?</button>
+                <button class="icon-btn" id="rtl-toggle" aria-label="Toggle RTL">?</button>
+                <a href="instant-quote.html" class="btn btn-secondary">Get Quote</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="section section-bg-secondary" style="padding-top: 150px; padding-bottom: 4rem;">
+        <div class="container text-center animate-on-scroll">
+            <h1>Industry Use Cases</h1>
+            <p class="subheading" style="max-width: 800px; margin: 0 auto;">See how premium certified translations empower global mobility and international business success.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container animate-on-scroll">
+            
+            <!-- Case 1 -->
+            <div class="use-case-row">
+                <img src="images/hero_3.png" alt="Immigration Applications" class="use-case-img">
+                <div class="use-case-content">
+                    <div style="color: var(--global-gold); font-weight: 520; margin-bottom: 0.5rem;">USCIS COMPLIANCE</div>
+                    <h2>Immigration Applications</h2>
+                    <p>When applying for visas, green cards, or citizenship, the accuracy of your documents is non-negotiable. We provide certified translations of birth certificates, marriage licenses, and police records that meet strict USCIS standards, ensuring your application process proceeds without delays due to translation errors.</p>
+                    <a href="service-details.html" class="btn btn-secondary" style="margin-top: 1rem;">View Immigration Services</a>
+                </div>
+            </div>
+
+            <!-- Case 2 -->
+            <div class="use-case-row">
+                <img src="images/hero_2.png" alt="Court Documents" class="use-case-img">
+                <div class="use-case-content">
+                    <div style="color: var(--global-gold); font-weight: 520; margin-bottom: 0.5rem;">INTERNATIONAL LAW</div>
+                    <h2>Court Documents & Litigation</h2>
+                    <p>International litigation requires precise terminology. Our legal translators handle court transcripts, evidence documents, and legal briefs with absolute confidentiality and precision. Our certified translations are accepted by courts globally, supporting complex cross-border legal proceedings.</p>
+                    <a href="service-details.html" class="btn btn-secondary" style="margin-top: 1rem;">View Legal Services</a>
+                </div>
+            </div>
+
+            <!-- Case 3 -->
+            <div class="use-case-row">
+                <img src="images/hero_1.png" alt="Business Contracts" class="use-case-img">
+                <div class="use-case-content">
+                    <div style="color: var(--global-gold); font-weight: 520; margin-bottom: 0.5rem;">CORPORATE EXPANSION</div>
+                    <h2>Global Business Contracts</h2>
+                    <p>Expanding your business overseas requires clear, legally binding agreements. We translate corporate charters, employment contracts, and partnership agreements, ensuring the legal intent remains intact across different jurisdictions and linguistic barriers.</p>
+                    <a href="service-details.html" class="btn btn-secondary" style="margin-top: 1rem;">View Business Services</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+        <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand animate-on-scroll">
+                    <a href="index.html" class="navbar-logo" style="padding-left: 0; margin-bottom: 1.5rem;">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 12H22M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Global Lingua
+                    </a>
+                    <p>A luxury international language consultancy trusted by governments, universities, law firms, and multinational organizations.</p>
+                    <div class="social-icons" style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14 9.94 13.4 10.61 13 11.16V10.13H10.74V18.5H13V13.78C13 12.54 13.9 12.18 14.54 12.18C15.28 12.18 15.5 12.8 15.5 13.78V18.5H18.5M7.88 8.66A1.56 1.56 0 1 0 7.88 5.54A1.56 1.56 0 0 0 7.88 8.66M6.3 18.5H9.46V10.13H6.3V18.5Z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6C21.69 6.35 20.86 6.58 20 6.69C20.88 6.16 21.56 5.32 21.88 4.31C21.05 4.81 20.13 5.16 19.16 5.36C18.37 4.5 17.26 4 16 4C13.65 4 11.73 5.92 11.73 8.29C11.73 8.63 11.77 8.96 11.84 9.27C8.28 9.09 5.11 7.38 3 4.79C2.63 5.42 2.42 6.16 2.42 6.94C2.42 8.43 3.17 9.75 4.33 10.5C3.62 10.5 2.96 10.3 2.38 10V10.03C2.38 12.11 3.86 13.85 5.82 14.24C5.46 14.34 5.08 14.39 4.69 14.39C4.42 14.39 4.15 14.36 3.89 14.31C4.43 16.03 6.03 17.27 7.92 17.31C6.44 18.47 4.58 19.15 2.56 19.15C2.22 19.15 1.88 19.13 1.54 19.09C3.44 20.31 5.68 21 8.08 21C15.93 21 20.22 14.5 20.22 8.86C20.22 8.67 20.22 8.49 20.2 8.3C21.04 7.69 21.81 6.9 22.46 6Z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="animate-on-scroll">
+                    <h4 class="footer-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="service-details.html">Certified Translation</a></li>
+                        <li><a href="service-details.html">Legal Translation</a></li>
+                        <li><a href="service-details.html">Immigration Services</a></li>
+                        <li><a href="service-details.html">Medical Translation</a></li>
+                    </ul>
+                </div>
+                <div class="animate-on-scroll">
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="translation-process.html">Our Process</a></li>
+                        <li><a href="languages.html">Languages</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="animate-on-scroll">
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Certification Standards</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" style="justify-content: center; text-align: center;">
+                <p>&copy; 2026 Global Lingua. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+

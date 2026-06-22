@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Languages | Global Lingua Translation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;520;540;580&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <style>
+        .filter-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            padding: 2.5rem;
+            border-radius: var(--radius-xl);
+            box-shadow: 0 10px 40px rgba(92, 107, 192, 0.15);
+            margin-bottom: 4rem;
+            border: 1px solid rgba(92, 107, 192, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .filter-container::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 250px; height: 250px;
+            background: radial-gradient(circle, rgba(92, 107, 192, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .filter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 1.5rem;
+            align-items: end;
+        }
+        @media (max-width: 1024px) {
+            .cultural-split {
+                flex-direction: column !important;
+                text-align: center !important;
+                align-items: center !important;
+            }
+            .cultural-content {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+            .cultural-title, .cultural-desc, .section-label {
+                text-align: center !important;
+            }
+            .cultural-list li {
+                justify-content: center !important;
+                text-align: center !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .filter-grid { grid-template-columns: 1fr; }
+            .filter-container .form-control {
+                font-size: 0.85rem !important;
+                padding: 0.8rem 1rem !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+        }
+        .language-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .language-item {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: var(--primary-bg);
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+        }
+        .language-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, var(--global-gold) 0%, #283593 100%);
+            z-index: -1;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .language-item:hover::before {
+            transform: scaleY(1);
+        }
+        .language-item:hover {
+            color: white;
+            border-color: transparent;
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        @keyframes spinGlobe {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes bounceHorizontal {
+            0% { transform: translateX(-4px); }
+            100% { transform: translateX(4px); }
+        }
+        .route-card {
+            cursor: pointer;
+        }
+        .route-card .route-arrow {
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+        .route-card:hover .route-arrow {
+            color: var(--global-gold);
+            animation: bounceHorizontal 0.6s infinite alternate ease-in-out;
+        }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+
+    <svg class="svg-defs">
+        <defs>
+            <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#E8C779" />
+                <stop offset="100%" stop-color="#A67B27" />
+            </linearGradient>
+            <linearGradient id="indigo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#5C6BC0" />
+                <stop offset="100%" stop-color="#283593" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+
+        <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M2 12H22M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Global Lingua
+            </a>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">☰</button>
+            
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home-2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="languages.html" class="active">Languages</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+                        <div class="navbar-actions">
+                <button class="icon-btn" id="theme-toggle" aria-label="Toggle Dark Mode">☾</button>
+                <button class="icon-btn" id="rtl-toggle" aria-label="Toggle RTL">⇄</button>
+                <a href="instant-quote.html" class="btn btn-secondary">Get Quote</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="section section-bg-secondary" style="padding-top: 150px; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); opacity: 0.04; pointer-events: none;">
+            <svg width="800" height="800" viewBox="0 0 100 100" style="animation: spinGlobe 40s linear infinite;">
+                <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="0.3"/>
+                <ellipse cx="50" cy="50" rx="48" ry="15" fill="none" stroke="currentColor" stroke-width="0.3" transform="rotate(30 50 50)"/>
+                <ellipse cx="50" cy="50" rx="48" ry="15" fill="none" stroke="currentColor" stroke-width="0.3" transform="rotate(-30 50 50)"/>
+                <ellipse cx="50" cy="50" rx="15" ry="48" fill="none" stroke="currentColor" stroke-width="0.3"/>
+            </svg>
+        </div>
+        <div class="container text-center animate-on-scroll" style="position: relative; z-index: 1;">
+            <h1>Supported Languages</h1>
+            <p class="subheading" style="max-width: 800px; margin: 0 auto;">Expert translation services across 100+ languages, connecting global markets with precision and cultural fluency.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container animate-on-scroll">
+            <div class="filter-container">
+                <div class="filter-grid">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Source Language</label>
+                        <select class="form-control">
+                            <option>English</option>
+                            <option>Spanish</option>
+                            <option>French</option>
+                            <option>German</option>
+                            <option>Mandarin</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Target Language</label>
+                        <select class="form-control">
+                            <option>Select Target Language...</option>
+                            <option>Spanish</option>
+                            <option>French</option>
+                            <option>German</option>
+                            <option>Mandarin</option>
+                            <option>Arabic</option>
+                            <option>Japanese</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" style="height: auto; padding: 1rem 2rem;">Search Pair</button>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 2rem;">Popular Translation Routes</h3>
+            <div class="grid grid-4" style="margin-bottom: 4rem;">
+                <div class="card route-card text-center" style="padding: 1.5rem 1rem;">
+                    <h4 class="card-title" style="margin-bottom: 0; white-space: nowrap; font-size: clamp(0.9rem, 1.5vw, 1.2rem);">English <span class="route-arrow">↔</span> Spanish</h4>
+                </div>
+                <div class="card route-card text-center" style="padding: 1.5rem 1rem;">
+                    <h4 class="card-title" style="margin-bottom: 0; white-space: nowrap; font-size: clamp(0.9rem, 1.5vw, 1.2rem);">English <span class="route-arrow">↔</span> Mandarin</h4>
+                </div>
+                <div class="card route-card text-center" style="padding: 1.5rem 1rem;">
+                    <h4 class="card-title" style="margin-bottom: 0; white-space: nowrap; font-size: clamp(0.9rem, 1.5vw, 1.2rem);">English <span class="route-arrow">↔</span> French</h4>
+                </div>
+                <div class="card route-card text-center" style="padding: 1.5rem 1rem;">
+                    <h4 class="card-title" style="margin-bottom: 0; white-space: nowrap; font-size: clamp(0.9rem, 1.5vw, 1.2rem);">Spanish <span class="route-arrow">↔</span> Portuguese</h4>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 2rem;">All Supported Languages</h3>
+            <div class="language-list">
+                <div class="language-item">Arabic</div>
+                <div class="language-item">Bengali</div>
+                <div class="language-item">Bulgarian</div>
+                <div class="language-item">Chinese (Simplified)</div>
+                <div class="language-item">Chinese (Traditional)</div>
+                <div class="language-item">Croatian</div>
+                <div class="language-item">Czech</div>
+                <div class="language-item">Danish</div>
+                <div class="language-item">Dutch</div>
+                <div class="language-item">English (US/UK/AU)</div>
+                <div class="language-item">Finnish</div>
+                <div class="language-item">French (EU/CA)</div>
+                <div class="language-item">German</div>
+                <div class="language-item">Greek</div>
+                <div class="language-item">Hebrew</div>
+                <div class="language-item">Hindi</div>
+                <div class="language-item">Hungarian</div>
+                <div class="language-item">Indonesian</div>
+                <div class="language-item">Italian</div>
+                <div class="language-item">Japanese</div>
+                <div class="language-item">Korean</div>
+                <div class="language-item">Norwegian</div>
+                <div class="language-item">Polish</div>
+                <div class="language-item">Portuguese (BR/EU)</div>
+                <div class="language-item">Romanian</div>
+                <div class="language-item">Russian</div>
+                <div class="language-item">Spanish (EU/LA)</div>
+                <div class="language-item">Swedish</div>
+                <div class="language-item">Thai</div>
+                <div class="language-item">Turkish</div>
+                <div class="language-item">Ukrainian</div>
+                <div class="language-item">Vietnamese</div>
+                <div class="language-item">Welsh</div>
+                <div class="language-item">Yiddish</div>
+                <div class="language-item">Zulu</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unique Section 1: Cultural Nuance -->
+    <section class="section unique-section-1" style="overflow: hidden; position: relative;">
+        <!-- decorative animated elements -->
+        <div class="glow-orb orb-left"></div>
+        <div class="container animate-on-scroll">
+            <div class="cultural-split">
+                <div style="position: relative;">
+                    <div class="cultural-img-wrapper">
+                        <img src="images/cultural_nuance.png" alt="Cultural Nuance in Translation" class="cultural-img">
+                    </div>
+                    
+                </div>
+                <div class="cultural-content">
+                    <div class="section-label">Beyond Words</div>
+                    <h2 class="cultural-title">The Cultural <span class="text-gradient">Nuance</span> Advantage</h2>
+                    <p class="cultural-desc">True translation isn't just about converting words—it's about transferring meaning, tone, and cultural intent. Our dedicated native linguists ensure your message resonates authentically in any local market.</p>
+                    <ul class="cultural-list">
+                        <li>
+                            <div class="icon-box">✦</div>
+                            <span><strong>Idiomatic Precision:</strong> Localized slang and phrasing.</span>
+                        </li>
+                        <li>
+                            <div class="icon-box">✦</div>
+                            <span><strong>Brand Voice Retention:</strong> Maintaining your corporate identity.</span>
+                        </li>
+                        <li>
+                            <div class="icon-box">✦</div>
+                            <span><strong>Regulatory Compliance:</strong> Adapting to regional legal nuances.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unique Section 2: Global Connectivity Hub -->
+    <section class="section unique-section-2" style="background: #0B0E14; color: white; position: relative; overflow: hidden; padding: 10rem 0;">
+        <img src="images/global_hub.png" alt="Global Data Hub" class="hub-bg-img parallax-img">
+        <div class="hub-overlay"></div>
+        
+        <div class="container animate-on-scroll" style="position: relative; z-index: 2;">
+            <div class="text-center" style="margin-bottom: 5rem;">
+                <h2 style="color: white; font-size: 3.5rem;">Global Connectivity <span style="color: var(--global-gold);">Hub</span></h2>
+                <p style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto;">Powered by cutting-edge neural networks and expert human review, our translation hub delivers unparalleled speed without sacrificing quality.</p>
+            </div>
+            
+            <div class="hub-cards-grid">
+                <div class="hub-card hover-tilt">
+                    <div class="hub-card-inner">
+                        <div class="hub-card-icon">⚡</div>
+                        <h4>Lightning Fast</h4>
+                        <p>API integrations and automated workflows reduce turnaround times by up to 60%.</p>
+                    </div>
+                </div>
+                <div class="hub-card hover-tilt delay-1">
+                    <div class="hub-card-inner">
+                        <div class="hub-card-icon">🛡️</div>
+                        <h4>Bank-Grade Security</h4>
+                        <p>End-to-end 256-bit encryption ensuring your sensitive documents remain strictly confidential.</p>
+                    </div>
+                </div>
+                <div class="hub-card hover-tilt delay-2">
+                    <div class="hub-card-inner">
+                        <div class="hub-card-icon">🧠</div>
+                        <h4>AI + Human Hybrid</h4>
+                        <p>Combining the speed of neural machine translation with the precise quality control of human experts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Language Expertise Categories -->
+    <section class="section section-bg-secondary">
+        <div class="container text-center animate-on-scroll">
+            <h2 style="margin-bottom: 3rem;">Language Expertise Categories</h2>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-icon" style="margin: 0 auto 1.5rem; font-family: 'Georgia', serif; font-size: 2.5rem; color: var(--global-gold);">Ä</div>
+                    <h4 class="card-title">European Languages</h4>
+                    <p class="card-content">Comprehensive coverage of all EU official languages, specializing in legal and business translation.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="margin: 0 auto 1.5rem; font-family: 'Georgia', serif; font-size: 2.5rem; color: var(--global-gold);">文</div>
+                    <h4 class="card-title">Asian Languages</h4>
+                    <p class="card-content">Expert localization for Mandarin, Japanese, Korean, and emerging Southeast Asian markets.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="margin: 0 auto 1.5rem; font-family: 'Georgia', serif; font-size: 2.5rem; color: var(--global-gold);">Ñ</div>
+                    <h4 class="card-title">Americas</h4>
+                    <p class="card-content">Nuanced translation for North, Central, and South American regional dialects and official requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Language Modal -->
+    <div class="modal-overlay" id="language-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn" aria-label="Close Modal">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon" id="modal-lang-icon">🌐</div>
+                <h3 class="modal-title" id="modal-lang-title">Language Name</h3>
+            </div>
+            <div class="modal-body">
+                <p>We offer comprehensive, certified translation services for <strong id="modal-lang-name">Language Name</strong>. Our native-speaking linguists ensure perfect cultural nuance and strict adherence to international legal standards.</p>
+                
+                <div class="modal-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>USCIS Certified Translation</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Legal & Corporate Documents</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>24-48 Hour Turnaround</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="instant-quote.html" class="btn btn-primary" style="width: 100%;">Get a Quote</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Route Modal -->
+    <div class="modal-overlay" id="route-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="route-modal-close-btn" aria-label="Close Modal">✕</button>
+            <div class="modal-header">
+                <div class="modal-icon" style="color: var(--global-gold);">🔄</div>
+                <h3 class="modal-title" id="modal-route-title">Translation Route</h3>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.95rem;">Dedicated Corridor Services</p>
+            </div>
+            <div class="modal-body">
+                <p>We provide specialized linguistic teams dedicated to the <strong id="modal-route-name" style="color: var(--global-gold);">Route Name</strong> corridor. Whether you need corporate, legal, or technical translations, our native experts ensure seamless cross-border communication.</p>
+                
+                <div class="modal-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✨</span>
+                        <span>High-Volume Translation Capacity</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✨</span>
+                        <span>Dedicated Corridor Project Manager</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✨</span>
+                        <span>Industry-Specific Terminology Glossaries</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="instant-quote.html" class="btn btn-primary" style="width: 100%;">Request Corridor Pricing</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand animate-on-scroll">
+                    <a href="index.html" class="navbar-logo" style="padding-left: 0; margin-bottom: 1.5rem;">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 12H22M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Global Lingua
+                    </a>
+                    <p>A luxury international language consultancy trusted by governments, universities, law firms, and multinational organizations.</p>
+                    <div class="social-icons" style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14 9.94 13.4 10.61 13 11.16V10.13H10.74V18.5H13V13.78C13 12.54 13.9 12.18 14.54 12.18C15.28 12.18 15.5 12.8 15.5 13.78V18.5H18.5M7.88 8.66A1.56 1.56 0 1 0 7.88 5.54A1.56 1.56 0 0 0 7.88 8.66M6.3 18.5H9.46V10.13H6.3V18.5Z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6C21.69 6.35 20.86 6.58 20 6.69C20.88 6.16 21.56 5.32 21.88 4.31C21.05 4.81 20.13 5.16 19.16 5.36C18.37 4.5 17.26 4 16 4C13.65 4 11.73 5.92 11.73 8.29C11.73 8.63 11.77 8.96 11.84 9.27C8.28 9.09 5.11 7.38 3 4.79C2.63 5.42 2.42 6.16 2.42 6.94C2.42 8.43 3.17 9.75 4.33 10.5C3.62 10.5 2.96 10.3 2.38 10V10.03C2.38 12.11 3.86 13.85 5.82 14.24C5.46 14.34 5.08 14.39 4.69 14.39C4.42 14.39 4.15 14.36 3.89 14.31C4.43 16.03 6.03 17.27 7.92 17.31C6.44 18.47 4.58 19.15 2.56 19.15C2.22 19.15 1.88 19.13 1.54 19.09C3.44 20.31 5.68 21 8.08 21C15.93 21 20.22 14.5 20.22 8.86C20.22 8.67 20.22 8.49 20.2 8.3C21.04 7.69 21.81 6.9 22.46 6Z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="animate-on-scroll">
+                    <h4 class="footer-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="service-details.html">Certified Translation</a></li>
+                        <li><a href="service-details.html">Legal Translation</a></li>
+                        <li><a href="service-details.html">Immigration Services</a></li>
+                        <li><a href="service-details.html">Medical Translation</a></li>
+                    </ul>
+                </div>
+                <div class="animate-on-scroll">
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="translation-process.html">Our Process</a></li>
+                        <li><a href="languages.html">Languages</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="animate-on-scroll">
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Certification Standards</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" style="justify-content: center; text-align: center;">
+                <p>&copy; 2026 Global Lingua. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

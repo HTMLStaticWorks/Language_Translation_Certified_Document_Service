@@ -1,0 +1,44 @@
+/* RTL Support */
+
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .navbar-menu {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+[dir="rtl"] .navbar-actions {
+    margin-left: 0;
+    margin-right: 2rem;
+}
+
+[dir="rtl"] .btn {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-content {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+[dir="rtl"] .navbar-logo {
+    flex-direction: row;
+}
+
+@media (max-width: 1024px) {
+    [dir="rtl"] .navbar-actions {
+        margin-right: auto;
+    }
+}
+
+[dir="rtl"] .qa-card::before {
+    right: auto;
+    left: 20px;
+}
+
+[dir="rtl"] .fixed-toggles {
+    right: auto !important;
+    left: 1.5rem !important;
+}

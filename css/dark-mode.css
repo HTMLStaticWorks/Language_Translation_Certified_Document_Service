@@ -1,0 +1,31 @@
+/* Dark Mode specific overrides */
+/* Note: Most dark mode variables are handled in style.css via [data-theme="dark"] */
+
+[data-theme="dark"] .card-icon {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .form-control {
+    background-color: var(--secondary-bg);
+}
+
+[data-theme="dark"] img {
+    opacity: 0.9;
+    transition: opacity var(--transition-normal);
+}
+
+[data-theme="dark"] img:hover {
+    opacity: 1;
+}
+
+[data-theme="dark"] .hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 23, 34, 0.7);
+    z-index: 0;
+}

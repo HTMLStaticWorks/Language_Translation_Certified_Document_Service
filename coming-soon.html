@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Global Lingua</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;520;540;580&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+
+    <svg class="svg-defs">
+        <defs>
+            <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#E8C779" />
+                <stop offset="100%" stop-color="#A67B27" />
+            </linearGradient>
+            <linearGradient id="indigo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#5C6BC0" />
+                <stop offset="100%" stop-color="#283593" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+
+        <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M2 12H22M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Global Lingua
+            </a>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">☰</button>
+            
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home-2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="languages.html">Languages</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+                        <div class="navbar-actions">
+                <button class="icon-btn" id="theme-toggle" aria-label="Toggle Dark Mode">?</button>
+                <button class="icon-btn" id="rtl-toggle" aria-label="Toggle RTL">?</button>
+                <a href="instant-quote.html" class="btn btn-secondary">Get Quote</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+        <div class="hero-bg" style="background-image: url('images/hero_1.png'); opacity: 0.1;"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h1 style="color: var(--global-gold);">Coming Soon</h1>
+            <p class="subheading" style="max-width: 600px; margin: 0 auto 3rem;">We are launching a new enterprise translation platform. Enter your email to get notified.</p>
+            
+            <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 1rem;">
+                <input type="email" class="form-control" placeholder="Enter your email address" style="flex: 1;">
+                <button type="button" class="btn btn-primary">Notify Me</button>
+            </form>
+            
+            <div style="margin-top: 4rem;">
+                <a href="index.html" class="btn btn-secondary">Return to Homepage</a>
+            </div>
+        </div>
+    </header>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

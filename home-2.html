@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certified Translation Services | Global Language Consultancy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;520;540;580&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <style>
+        /* Document Journey Animation - Inline Format */
+        .doc-path {
+            width: 100%;
+            max-width: 320px;
+            height: 2px;
+            background: rgba(199, 154, 59, 0.2);
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            margin-top: 1rem;
+        }
+        
+        .doc-milestone {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--global-gold);
+            transform: translateY(-4px);
+            position: relative;
+        }
+        
+        .doc-milestone::after {
+            content: '';
+            position: absolute;
+            top: -22px; left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+        
+        .m1::after { content: 'Received'; }
+        .m2::after { content: 'Translating'; }
+        .m3::after { content: 'Review'; }
+        .m4::after { content: 'Certified'; }
+        
+        .doc-traveler {
+            position: absolute;
+            top: -12px; left: 0;
+            width: 20px; height: 26px;
+            background: #fff;
+            border: 2px solid var(--global-gold);
+            border-radius: 2px;
+            animation: docJourney 8s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--global-gold);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        @keyframes docJourney {
+            0% { left: 0; opacity: 0; }
+            10% { opacity: 1; left: 0; }
+            30% { left: 33%; }
+            50% { left: 66%; color: var(--global-gold); }
+            70% { left: 100%; }
+            90% { opacity: 1; left: 100%; }
+            100% { left: 100%; opacity: 0; }
+        }
+
+        /* Academic Credential List Animation */
+        .academic-list-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 1.2rem;
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .academic-list-item:hover {
+            background: var(--bg-secondary);
+            border-color: rgba(199, 154, 59, 0.2);
+            transform: translateX(10px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .academic-item-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(199, 154, 59, 0.3);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .academic-list-item:hover .academic-item-img {
+            border-color: var(--global-gold);
+            transform: scale(1.05);
+        }
+
+        /* Quality Assurance Cards */
+        /* Quality Assurance Cards */
+        .qa-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+            text-align: left;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .qa-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .qa-card::before {
+            content: attr(data-step);
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 6.5rem;
+            font-weight: 800;
+            color: rgba(199, 154, 59, 0.15);
+            z-index: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            line-height: 1;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.05em;
+            pointer-events: none;
+        }
+
+        .qa-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(199, 154, 59, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .qa-card:hover::before {
+            color: rgba(199, 154, 59, 0.35);
+            transform: scale(1.05);
+        }
+
+        .qa-icon-box {
+            width: 55px;
+            height: 55px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(199, 154, 59, 0.1), rgba(199, 154, 59, 0.02));
+            border: 1px solid rgba(199, 154, 59, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: var(--global-gold);
+            transition: all 0.4s ease;
+        }
+
+        @media (max-width: 992px) {
+            html, body { overflow-x: hidden; max-width: 100vw; }
+            .hero {
+                overflow: hidden;
+                width: 100%;
+                max-width: 100vw;
+                box-sizing: border-box;
+            }
+            .hero .container,
+            .hero .hero-content {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 1.25rem !important;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+            .hero .grid-2 {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 2rem !important;
+                width: 100% !important;
+            }
+            .hero .grid-2 > div {
+                width: 100% !important;
+                order: unset !important;
+            }
+            .hero-content-left {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100% !important;
+                box-sizing: border-box;
+            }
+            .hero-content-left h1,
+            .hero-content-left p,
+            .hero-content-left > div { text-align: center !important; }
+            .hero-content-left .hero-actions {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                width: 100% !important;
+                gap: 1rem !important;
+            }
+            .hero-content-left .hero-actions a {
+                width: calc(50% - 0.5rem) !important;
+                text-align: center !important;
+                box-sizing: border-box;
+                font-size: 0.85rem !important;
+                padding: 0.9rem 1rem !important;
+            }
+            .doc-path { display: none; }
+            .hero {
+                min-height: auto !important;
+                height: auto !important;
+                padding-top: 8rem !important;
+                padding-bottom: 3rem !important;
+            }
+            .hero-content-left .hero-actions a.btn-primary {
+                background: var(--global-gold) !important;
+                color: #fff !important;
+                border-color: var(--global-gold) !important;
+                font-weight: 600 !important;
+                height: auto !important;
+            }
+            .hero-content-left .hero-actions a.btn-secondary {
+                height: auto !important;
+            }
+
+            /* Hero image - add padding so it doesn't touch edges */
+            .hero .grid-2 > div:last-child {
+                padding: 0 1rem;
+                margin-top: 2rem !important;
+                margin-bottom: 1rem;
+            }
+            .hero .grid-2 > div:last-child img,
+            .hero .grid-2 > div:last-child > div {
+                border-radius: var(--radius-lg) !important;
+            }
+
+            /* All sections below hero - stack grid & center text */
+            .section .grid-2,
+            .section-bg-secondary .grid-2 {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 2rem !important;
+                width: 100% !important;
+            }
+            .section .grid-2 > div,
+            .section-bg-secondary .grid-2 > div {
+                order: unset !important;
+                width: 100% !important;
+                text-align: center !important;
+            }
+            .section-bg-secondary .grid-4 {
+                display: grid !important;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+                gap: 2rem !important;
+            }
+            .section h2, .section-bg-secondary h2,
+            .section p, .section-bg-secondary p,
+            .section ul, .section-bg-secondary ul {
+                text-align: center !important;
+            }
+            .section ul li, .section-bg-secondary ul li {
+                justify-content: center !important;
+                text-align: center !important;
+            }
+            .section img, .section-bg-secondary img {
+                width: 100% !important;
+                max-width: 100% !important;
+                border-radius: var(--radius-lg) !important;
+                padding: 0 1rem;
+                box-sizing: border-box;
+            }
+            .section .btn, .section-bg-secondary .btn {
+                width: 100% !important;
+                display: flex !important;
+                justify-content: center !important;
+                box-sizing: border-box;
+            }
+
+            /* Restore Academic circular images and horizontal layout on tablet */
+            .academic-list-item {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                text-align: left !important;
+                gap: 1.2rem !important;
+            }
+            .academic-list-item > div {
+                text-align: left !important;
+            }
+            .academic-list-item h4,
+            .academic-list-item p {
+                text-align: left !important;
+            }
+            .section img.academic-item-img {
+                width: 70px !important;
+                min-width: 70px !important;
+                max-width: 70px !important;
+                height: 70px !important;
+                padding: 0 !important;
+                border-radius: 50% !important;
+                flex-shrink: 0 !important;
+                margin-bottom: 0 !important;
+                object-fit: cover !important;
+            }
+
+            /* Prevent academic section image side panel overflow */
+            .section .grid-2 > div[style*="position: relative"] {
+                padding: 0 1rem !important;
+                box-sizing: border-box !important;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            /* Academic Credentials - stack image + text vertically on mobile only */
+            .academic-list-item {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                padding: 1.5rem 1rem !important;
+                width: 100% !important;
+                box-sizing: border-box;
+            }
+            .academic-item-img {
+                width: 100% !important;
+                height: 180px !important;
+                border-radius: var(--radius-lg) !important;
+                object-fit: cover !important;
+                margin-bottom: 1rem !important;
+                flex-shrink: unset !important;
+            }
+            .academic-list-item > div {
+                width: 100% !important;
+                text-align: center !important;
+            }
+            .academic-list-item h4,
+            .academic-list-item p {
+                text-align: center !important;
+            }
+            .section-bg-secondary .grid-4 {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+
+    <svg class="svg-defs">
+        <defs>
+            <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#E8C779" />
+                <stop offset="100%" stop-color="#A67B27" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M2 12H22M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Global Lingua
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">&#9776;</button>
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home-2.html" class="active">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="languages.html">Languages</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <button class="icon-btn" id="theme-toggle" aria-label="Toggle Dark Mode">&#9790;</button>
+                <button class="icon-btn" id="rtl-toggle" aria-label="Toggle RTL">&#8676;</button>
+                <a href="instant-quote.html" class="btn btn-secondary">Get Quote</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" style="padding-top: 5rem; padding-bottom: 4rem; background: var(--primary-bg);">
+        <div class="container hero-content animate-on-scroll" style="margin: 0 auto; position: relative; z-index: 10; height: 100%; display: flex; align-items: center; max-width: 1320px !important;">
+            <div class="grid grid-2" style="align-items: center; gap: 4rem; width: 100%;">
+                <div class="hero-content-left" style="order: 1;">
+                    <div class="doc-path">
+                        <div class="doc-milestone m1"></div>
+                        <div class="doc-milestone m2"></div>
+                        <div class="doc-milestone m3"></div>
+                        <div class="doc-milestone m4"></div>
+                        <div class="doc-traveler">Aa</div>
+                    </div>
+                    <div style="display:inline-block;padding:0.4rem 1rem;background:rgba(199,154,59,0.1);color:var(--global-gold);border-radius:50px;font-size:0.85rem;margin-bottom:1.2rem;border:1px solid rgba(199,154,59,0.2);">
+                        &#127760; Certified Accuracy
+                    </div>
+                    <h1 style="margin-bottom:1.2rem;font-size:clamp(2.5rem,4vw,3.8rem);">The Journey of a Certified Document</h1>
+                    <p class="subheading" style="max-width:600px;margin-bottom:2rem;">Track your official translations from submission to certification with our transparent, globally recognized process.</p>
+                    <div class="hero-actions" style="margin-top:0;">
+                        <a href="instant-quote.html" class="btn btn-primary">Start Your Document Journey</a>
+                        <a href="translation-process.html" class="btn btn-secondary">Learn How It Works</a>
+                    </div>
+                </div>
+                <div style="order:2;position:relative;display:flex;justify-content:center;align-items:center;" class="animate-on-scroll">
+                    <div style="position:relative;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--glass-border);max-height:65vh;width:100%;max-width:550px;">
+                        <img src="images/hero_4.png" alt="Document Journey" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02);">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Immigration Translation Services -->
+    <section class="section section-bg-secondary">
+        <div class="container">
+            <div class="grid grid-2 animate-on-scroll" style="align-items: center;">
+                <div style="order: 2;">
+                    <h2>Immigration Translation Services</h2>
+                    <p>USCIS-compliant translations for all your immigration needs. We guarantee acceptance by all major government bodies globally. Our process ensures that your vital records are translated with the utmost precision, avoiding any delays in your application process.</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="margin-bottom: 0.5rem;">✓ Birth Certificates</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Marriage Licenses</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Police Clearances</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Passports & Visas</li>
+                    </ul>
+                    <a href="service-details.html" class="btn btn-primary">View Immigration Services</a>
+                </div>
+                <div style="order: 1;">
+                    <img src="images/hero_3.png" alt="Immigration Documents" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Legal Translation Expertise -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-2 animate-on-scroll" style="align-items: center;">
+                <div>
+                    <h2>Legal Translation Expertise</h2>
+                    <p>Flawless legal document translation by professionals who understand international law. We provide certified translations for litigation, corporate compliance, and intellectual property matters across jurisdictions.</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2.5rem;">
+                        <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><span style="color: var(--global-gold);">✓</span> Court Transcripts & Litigation</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><span style="color: var(--global-gold);">✓</span> Corporate Contracts & Agreements</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><span style="color: var(--global-gold);">✓</span> Intellectual Property & Patents</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;"><span style="color: var(--global-gold);">✓</span> NDAs & Confidentiality Agreements</li>
+                    </ul>
+                    <a href="service-details.html" class="btn btn-secondary">Explore Legal Expertise</a>
+                </div>
+                <div>
+                    <img src="images/hero_2.png" alt="Legal Document Review" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Academic Credential Evaluation -->
+    <section class="section" style="position: relative; overflow: hidden; background: var(--bg-primary);">
+        <!-- Animated Background Elements -->
+        <div style="position: absolute; top: -10%; left: -5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(199, 154, 59, 0.08) 0%, transparent 70%); border-radius: 50%; animation: float 8s infinite alternate; pointer-events: none;"></div>
+        
+        <div class="container animate-on-scroll" style="position: relative; z-index: 2;">
+            <div class="grid grid-2" style="align-items: center; gap: 4rem;">
+                
+                <!-- Left: Large Image -->
+                <div style="position: relative;">
+                    <div style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--glass-border); position: relative;">
+                        <img src="images/academic.png" alt="Academic Credentials" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                        <!-- Overlay gradient for luxury feel -->
+                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%); pointer-events: none;"></div>
+                    </div>
+                    
+                </div>
+
+                <!-- Right: Content & List -->
+                <div>
+                    <div style="display: inline-block; padding: 0.4rem 1.2rem; background: rgba(199, 154, 59, 0.1); color: var(--global-gold); border-radius: 50px; font-weight: 540; font-size: 0.85rem; margin-bottom: 1.5rem; border: 1px solid rgba(199, 154, 59, 0.2);">
+                        🎓 Education Specialists
+                    </div>
+                    <h2 style="margin-bottom: 1.5rem;">Academic Credential Evaluation</h2>
+                    <p style="margin-bottom: 2.5rem;">We help international students and professionals translate diplomas, transcripts, and syllabus documents to meet strict university admission standards globally.</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        
+                        <!-- List Item 1 -->
+                        <div class="academic-list-item">
+                            <img src="images/hero_1.png" alt="High School Transcripts" class="academic-item-img">
+                            <div>
+                                <h4 style="margin-bottom: 0.3rem; font-size: 1.1rem;">High School Transcripts</h4>
+                                <p style="margin-bottom: 0; font-size: 0.95rem; color: var(--text-secondary);">Translated and formatted to match destination country grading systems.</p>
+                            </div>
+                        </div>
+
+                        <!-- List Item 2 -->
+                        <div class="academic-list-item">
+                            <img src="images/svc_academic.png" alt="University Degrees" class="academic-item-img">
+                            <div>
+                                <h4 style="margin-bottom: 0.3rem; font-size: 1.1rem;">University Degrees</h4>
+                                <p style="margin-bottom: 0; font-size: 0.95rem; color: var(--text-secondary);">Certified translations of Bachelor's, Master's, and Doctorate diplomas.</p>
+                            </div>
+                        </div>
+
+                        <!-- List Item 3 -->
+                        <div class="academic-list-item">
+                            <img src="images/hero_4.png" alt="Course Descriptions" class="academic-item-img">
+                            <div>
+                                <h4 style="margin-bottom: 0.3rem; font-size: 1.1rem;">Course Descriptions</h4>
+                                <p style="margin-bottom: 0; font-size: 0.95rem; color: var(--text-secondary);">Detailed syllabus translations for accurate credit transfers.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Quality Assurance Framework -->
+    <section class="section section-bg-secondary">
+        <div class="container">
+            <div class="section-header text-center animate-on-scroll" style="margin-bottom: 4rem;">
+                <div style="display: inline-block; padding: 0.4rem 1.2rem; background: rgba(199, 154, 59, 0.1); color: var(--global-gold); border-radius: 50px; font-weight: 540; font-size: 0.85rem; margin-bottom: 1.5rem; border: 1px solid rgba(199, 154, 59, 0.2);">
+                    🛡️ Multi-Tier Security
+                </div>
+                <h2>Our Quality Assurance Framework</h2>
+                <p style="max-width: 600px; margin: 0 auto;">A sophisticated multi-tier review system ensuring absolute accuracy, linguistic nuance, and global legal compliance.</p>
+            </div>
+            
+            <div class="grid grid-4 animate-on-scroll" style="gap: 2rem;">
+                <!-- Step 1 -->
+                <div class="qa-card" data-step="01">
+                    <div class="qa-icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                    <h4 style="margin-bottom: 1rem; font-size: 1.2rem;">Native Linguists</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">100% human translation performed exclusively by certified native speakers of the target language.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="qa-card" data-step="02">
+                    <div class="qa-icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    </div>
+                    <h4 style="margin-bottom: 1rem; font-size: 1.2rem;">Subject Experts</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Rigorous review by specialists with deep knowledge in legal, medical, and technical terminology.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="qa-card" data-step="03">
+                    <div class="qa-icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h4 style="margin-bottom: 1rem; font-size: 1.2rem;">ISO Certified</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Strict adherence to international quality management and translation precision standards.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="qa-card" data-step="04">
+                    <div class="qa-icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>
+                    </div>
+                    <h4 style="margin-bottom: 1rem; font-size: 1.2rem;">Final Certification</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Documents are signed, stamped, and notarized for official use by global government bodies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand animate-on-scroll">
+                    <a href="index.html" class="navbar-logo" style="padding-left: 0; margin-bottom: 1.5rem;">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 12H22M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Global Lingua
+                    </a>
+                    <p>A luxury international language consultancy trusted by governments, universities, law firms, and multinational organizations.</p>
+                    <div class="social-icons" style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14 9.94 13.4 10.61 13 11.16V10.13H10.74V18.5H13V13.78C13 12.54 13.9 12.18 14.54 12.18C15.28 12.18 15.5 12.8 15.5 13.78V18.5H18.5M7.88 8.66A1.56 1.56 0 1 0 7.88 5.54A1.56 1.56 0 0 0 7.88 8.66M6.3 18.5H9.46V10.13H6.3V18.5Z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6C21.69 6.35 20.86 6.58 20 6.69C20.88 6.16 21.56 5.32 21.88 4.31C21.05 4.81 20.13 5.16 19.16 5.36C18.37 4.5 17.26 4 16 4C13.65 4 11.73 5.92 11.73 8.29C11.73 8.63 11.77 8.96 11.84 9.27C8.28 9.09 5.11 7.38 3 4.79C2.63 5.42 2.42 6.16 2.42 6.94C2.42 8.43 3.17 9.75 4.33 10.5C3.62 10.5 2.96 10.3 2.38 10V10.03C2.38 12.11 3.86 13.85 5.82 14.24C5.46 14.34 5.08 14.39 4.69 14.39C4.42 14.39 4.15 14.36 3.89 14.31C4.43 16.03 6.03 17.27 7.92 17.31C6.44 18.47 4.58 19.15 2.56 19.15C2.22 19.15 1.88 19.13 1.54 19.09C3.44 20.31 5.68 21 8.08 21C15.93 21 20.22 14.5 20.22 8.86C20.22 8.67 20.22 8.49 20.2 8.3C21.04 7.69 21.81 6.9 22.46 6Z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="animate-on-scroll">
+                    <h4 class="footer-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="service-details.html">Certified Translation</a></li>
+                        <li><a href="service-details.html">Legal Translation</a></li>
+                        <li><a href="service-details.html">Immigration Services</a></li>
+                        <li><a href="service-details.html">Medical Translation</a></li>
+                    </ul>
+                </div>
+                <div class="animate-on-scroll">
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="translation-process.html">Our Process</a></li>
+                        <li><a href="languages.html">Languages</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="animate-on-scroll">
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Certification Standards</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" style="justify-content: center; text-align: center;">
+                <p>&copy; 2026 Global Lingua. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
