@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/dark-mode.css">
     <link rel="stylesheet" href="css/rtl.css">
     <style>
-        /* Document Journey Animation - Inline Format */
         .doc-path {
             width: 100%;
             max-width: 320px;
@@ -18,8 +17,7 @@
             position: relative;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 3rem;
-            margin-top: 1rem;
+            margin: 1rem 1.5rem 3rem 1.5rem; /* Space at both start and end points */
         }
         
         .doc-milestone {
@@ -240,7 +238,11 @@
                 font-size: 0.85rem !important;
                 padding: 0.9rem 1rem !important;
             }
-            .doc-path { display: none; }
+            .doc-path { 
+                display: flex !important; 
+                margin: 1rem auto 3rem auto !important;
+                max-width: 260px !important;
+            }
             .hero {
                 min-height: auto !important;
                 height: auto !important;
