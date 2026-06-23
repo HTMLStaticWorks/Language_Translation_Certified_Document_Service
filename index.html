@@ -409,37 +409,45 @@
         /* Premium Workflow Timeline */
         .workflow-timeline {
             position: relative;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
         }
 
         .workflow-timeline::before {
             content: '';
             position: absolute;
-            top: 0; left: 40px;
-            width: 3px;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--global-gold), var(--global-gold), transparent);
+            background: linear-gradient(to bottom, var(--global-gold), rgba(199, 154, 59, 0.2), transparent);
             z-index: 0;
-            border-radius: 3px;
-        }
-
-        [data-theme="dark"] .workflow-timeline::before {
-            background: linear-gradient(to bottom, var(--global-gold), var(--global-gold), transparent);
+            border-radius: 4px;
         }
 
         .workflow-step {
             position: relative;
-            padding-left: 100px;
-            margin-bottom: 3.5rem;
+            margin-bottom: 4rem;
             z-index: 1;
             display: flex;
             align-items: center;
+            width: 50%;
+            padding-right: 50px;
+            justify-content: flex-end;
+        }
+
+        .workflow-step:nth-child(even) {
+            align-self: flex-end;
+            padding-right: 0;
+            padding-left: 50px;
+            justify-content: flex-start;
         }
 
         .workflow-number {
             position: absolute;
-            top: 50%; left: 15px;
+            top: 50%; right: -27px;
             transform: translateY(-50%);
             width: 54px; height: 54px;
             background: var(--primary-bg);
@@ -453,13 +461,19 @@
             color: var(--global-gold);
             box-shadow: 0 0 0 8px var(--secondary-bg);
             transition: all var(--transition-normal);
+            z-index: 2;
+        }
+
+        .workflow-step:nth-child(even) .workflow-number {
+            right: auto;
+            left: -27px;
         }
 
         .workflow-step:hover .workflow-number {
             background: var(--global-gold);
             color: #fff;
-            transform: translateY(-50%) scale(1.15);
-            box-shadow: 0 0 20px rgba(199, 154, 59, 0.4), 0 0 0 8px var(--secondary-bg);
+            transform: translateY(-50%) scale(1.2);
+            box-shadow: 0 0 25px rgba(199, 154, 59, 0.6), 0 0 0 8px var(--secondary-bg);
             border-color: var(--global-gold);
         }
 
@@ -471,12 +485,60 @@
             backdrop-filter: blur(12px);
             transition: all var(--transition-normal);
             width: 100%;
+            position: relative;
+        }
+
+        .workflow-content::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -12px;
+            transform: translateY(-50%);
+            border-width: 12px 0 12px 12px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--glass-border);
+            z-index: 1;
+            transition: all var(--transition-normal);
+        }
+        
+        .workflow-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -11px;
+            transform: translateY(-50%);
+            border-width: 11px 0 11px 11px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--card-bg);
+            z-index: 2;
+        }
+
+        .workflow-step:nth-child(even) .workflow-content::after {
+            right: auto;
+            left: -12px;
+            border-width: 12px 12px 12px 0;
+            border-color: transparent var(--glass-border) transparent transparent;
+        }
+        
+        .workflow-step:nth-child(even) .workflow-content::before {
+            right: auto;
+            left: -11px;
+            border-width: 11px 11px 11px 0;
+            border-color: transparent var(--card-bg) transparent transparent;
         }
 
         .workflow-step:hover .workflow-content {
-            box-shadow: var(--shadow-lg);
-            transform: translateX(10px);
+            box-shadow: var(--glow-primary);
             border-color: var(--global-gold);
+            transform: scale(1.02);
+        }
+
+        .workflow-step:hover .workflow-content::after {
+            border-color: transparent transparent transparent var(--global-gold);
+        }
+
+        .workflow-step:nth-child(even):hover .workflow-content::after {
+            border-color: transparent var(--global-gold) transparent transparent;
         }
 
         .workflow-content h4 {
@@ -492,12 +554,16 @@
             line-height: 1.7;
         }
 
-        @media (max-width: 768px) {
-            .workflow-timeline::before { left: 20px; }
-            .workflow-number { left: 0; width: 44px; height: 44px; font-size: 1.2rem; top: 0; transform: translateY(0); }
-            .workflow-step { padding-left: 70px; align-items: flex-start; }
+        @media (max-width: 992px) {
+            .workflow-timeline::before { left: 30px; transform: none; }
+            .workflow-step { width: 100%; padding-left: 80px; padding-right: 0; justify-content: flex-start; margin-bottom: 3rem; align-self: flex-start; }
+            .workflow-step:nth-child(even) { margin-left: 0; padding-left: 80px; padding-right: 0; align-self: flex-start; }
+            .workflow-number { left: 5px; right: auto; top: 0; transform: translateY(0); width: 44px; height: 44px; font-size: 1.2rem; }
+            .workflow-step:nth-child(even) .workflow-number { left: 5px; right: auto; }
             .workflow-step:hover .workflow-number { transform: translateY(0) scale(1.1); }
-            .workflow-content { padding: 1.5rem; }
+            .workflow-content::after, .workflow-content::before { display: none; }
+            .workflow-content { padding: 1.8rem; }
+            .workflow-step:hover .workflow-content { transform: translateX(10px); }
         }
 
         /* Premium Nexus Section */
@@ -546,6 +612,7 @@
         .nexus-header h2 span {
             background: linear-gradient(135deg, var(--global-gold) 0%, #fff 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -710,23 +777,7 @@
 
         .marquee-container::before,
         .marquee-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 15vw;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .marquee-container::before {
-            left: 0;
-            background: linear-gradient(to right, var(--primary-bg) 0%, transparent 100%);
-        }
-
-        .marquee-container::after {
-            right: 0;
-            background: linear-gradient(to left, var(--primary-bg) 0%, transparent 100%);
+            display: none;
         }
 
         .marquee-track {
@@ -783,6 +834,21 @@
         .testimonial-card:hover .testimonial-stars svg:nth-child(3) { transition-delay: 0.1s; }
         .testimonial-card:hover .testimonial-stars svg:nth-child(4) { transition-delay: 0.15s; }
         .testimonial-card:hover .testimonial-stars svg:nth-child(5) { transition-delay: 0.2s; }
+        /* Fix for Premium Certification Categories 3rd card on tablet */
+        @media (max-width: 1024px) {
+            .grid-3 > .premium-img-card:last-child {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: calc(50% - 1rem);
+            }
+        }
+        @media (max-width: 768px) {
+            .grid-3 > .premium-img-card:last-child {
+                grid-column: auto;
+                justify-self: stretch;
+                width: 100%;
+            }
+        }
     </style>
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head>
@@ -875,7 +941,7 @@
                         <div class="premium-lang-icon">🇪🇸</div>
                         <h3>English ↔ Spanish</h3>
                         <p>Comprehensive localization for North American, Latin American, and European markets. Expertly handling USCIS compliance, legal contracts, and medical trials with cultural nuance.</p>
-                        <a href="languages.html">Explore Route →</a>
+                        <a href="languages.html">Explore Route</a>
                     </div>
                 </div>
                 
@@ -885,7 +951,7 @@
                         <div class="premium-lang-icon">🇨🇳</div>
                         <h4>English ↔ Mandarin</h4>
                         <p>Corporate and technical translations ensuring precise localization for the Asian market.</p>
-                        <a href="languages.html">Learn More →</a>
+                        <a href="languages.html">Learn More</a>
                     </div>
                 </div>
                 
@@ -895,7 +961,7 @@
                         <div class="premium-lang-icon">🇫🇷</div>
                         <h4>French ↔ English</h4>
                         <p>Certified immigration and academic documents for cross-border mobility in Canada and the EU.</p>
-                        <a href="languages.html">Learn More →</a>
+                        <a href="languages.html">Learn More</a>
                     </div>
                 </div>
                 
@@ -905,7 +971,7 @@
                         <div class="premium-lang-icon" style="font-size: 2.5rem; margin-bottom: 0.5rem;">🇩🇪</div>
                         <h4>German ↔ English</h4>
                         <p>Engineering, technical manuals, and corporate communication accuracy for DACH regions.</p>
-                        <a href="languages.html">Learn More →</a>
+                        <a href="languages.html">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -930,7 +996,7 @@
                     <div class="premium-img-content">
                         <h4>Immigration Services</h4>
                         <p>USCIS accepted translations for birth certificates, marriage licenses, and visas. We ensure your application avoids RFE delays.</p>
-                        <a href="service-details.html">Learn More →</a>
+                        <a href="service-details.html">Learn More</a>
                     </div>
                 </div>
                 <div class="premium-img-card animate-on-scroll">
@@ -938,7 +1004,7 @@
                     <div class="premium-img-content">
                         <h4>Legal Documents</h4>
                         <p>Contracts, court transcripts, and sworn declarations translated with absolute legal precision and strict confidentiality.</p>
-                        <a href="service-details.html">Learn More →</a>
+                        <a href="service-details.html">Learn More</a>
                     </div>
                 </div>
                 <div class="premium-img-card animate-on-scroll">
@@ -946,7 +1012,7 @@
                     <div class="premium-img-content">
                         <h4>Academic Records</h4>
                         <p>Diplomas, transcripts, and syllabus translations properly formatted for international university admissions.</p>
-                        <a href="service-details.html">Learn More →</a>
+                        <a href="service-details.html">Learn More</a>
                     </div>
                 </div>
             </div>

@@ -42,3 +42,9 @@
     right: auto !important;
     left: 1.5rem !important;
 }
+
+[dir="rtl"] select.form-control {
+    background-position: left 1.2rem center;
+    padding-right: 1.2rem;
+    padding-left: 3rem;
+}

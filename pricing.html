@@ -47,12 +47,15 @@
             list-style: none;
             text-align: left;
             margin: 2rem 0;
+            width: 100%;
         }
         .pricing-features li {
+            width: 100%;
             padding: 0.75rem 0;
             border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
+            justify-content: flex-start;
             gap: 0.5rem;
         }
         .pricing-features li::before {
@@ -76,6 +79,9 @@
             .pricing-card.featured {
                 transform: scale(1) !important;
             }
+            .trust-content {
+                text-align: center !important;
+            }
         }
         @media (max-width: 767px) {
             .section .grid-3 {
@@ -92,6 +98,9 @@
             .section .grid-3 > div {
                 flex: 1 1 100% !important;
                 max-width: 100% !important;
+                width: 100% !important;
+            }
+            .section .grid-3 > div:last-child {
                 width: 100% !important;
             }
         }
@@ -198,7 +207,7 @@
         </div>
     </header>
 
-    <section class="section">
+    <section class="section" style="padding-bottom: 2rem;">
         <div class="container animate-on-scroll">
             <div class="grid grid-3">
                 
@@ -228,7 +237,7 @@
                         <li>100% Acceptance Guarantee</li>
                         <li>48 Hours Turnaround</li>
                     </ul>
-                    <a href="instant-quote.html" class="btn btn-primary" style="width: 100%;">Get Certified Translation</a>
+                    <a href="instant-quote.html" class="btn btn-primary" style="width: 100%;">Get Certified</a>
                 </div>
 
                 <!-- Expedited Service -->
@@ -238,12 +247,12 @@
                     <div class="price">$55.00 <span>/ page</span></div>
                     <ul class="pricing-features">
                         <li>Top Priority Processing</li>
-                        <li>All Certified Features</li>
+                       
                         <li>Dedicated Account Manager</li>
                         <li>Notarization Available</li>
                         <li>12-24 Hours Turnaround</li>
                     </ul>
-                    <a href="instant-quote.html" class="btn btn-secondary" style="width: 100%;">Request Urgent Quote</a>
+                    <a href="instant-quote.html" class="btn btn-secondary" style="width: 100%;">Request Quote</a>
                 </div>
 
             </div>
@@ -257,7 +266,7 @@
     </section>
 
     <!-- Trust Guarantee Animated Section -->
-    <section class="section" style="overflow: hidden; position: relative;">
+    <section class="section" style="overflow: hidden; position: relative; padding-top: 2rem;">
         <!-- decorative animated elements -->
         <div style="position: absolute; top: 10%; right: 5%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(199, 154, 59, 0.15) 0%, transparent 70%); border-radius: 50%; animation: float 6s infinite alternate; pointer-events: none;"></div>
         <div style="position: absolute; bottom: 10%; left: -5%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(199, 154, 59, 0.1) 0%, transparent 70%); border-radius: 50%; animation: float 8s infinite alternate-reverse; pointer-events: none;"></div>
@@ -269,7 +278,7 @@
                     
                 
                 </div>
-                <div>
+                <div class="trust-content">
                     <div style="display:inline-block;padding:0.4rem 1rem;background:rgba(199,154,59,0.1);color:var(--global-gold);border-radius:50px;font-size:0.85rem;margin-bottom:1.2rem;border:1px solid rgba(199,154,59,0.2);">
                         &#128100; Absolute Precision
                     </div>

@@ -387,8 +387,8 @@ header.section-bg-secondary {
 }
 
 .icon-btn {
-    background: transparent;
-    border: none;
+    background: var(--card-bg);
+    border: 1px solid var(--global-gold);
     color: var(--text-primary);
     width: 44px;
     height: 44px;
@@ -401,8 +401,11 @@ header.section-bg-secondary {
 }
 
 .icon-btn:hover {
-    background: var(--secondary-bg);
-    transform: scale(1.1) rotate(5deg);
+    background: var(--global-gold);
+    color: #FFFFFF;
+    border-color: var(--global-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(199, 154, 59, 0.3);
 }
 
 .mobile-menu-toggle {
@@ -575,7 +578,7 @@ header.section-bg-secondary {
     padding: 1.2rem;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    background: var(--card-bg);
+    background-color: var(--card-bg);
     backdrop-filter: blur(10px);
     color: var(--text-primary);
     font-family: inherit;
@@ -587,7 +590,18 @@ header.section-bg-secondary {
     outline: none;
     border-color: var(--global-gold);
     box-shadow: 0 0 0 4px rgba(199, 154, 59, 0.1);
-    background: var(--primary-bg);
+    background-color: var(--primary-bg);
+}
+
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C79A3B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1.2rem center;
+    background-size: 1.2em;
+    padding-right: 3rem;
 }
 
 /* Responsive Overrides */
@@ -1474,3 +1488,20 @@ header.section-bg-secondary {
     }
 }
 
+/* Footer Mobile Alignment Fix */
+@media (max-width: 992px) {
+    .footer-brand {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    .footer-brand .navbar-logo {
+        justify-content: center !important;
+        width: 100% !important;
+    }
+    .footer-brand .social-icons {
+        justify-content: center !important;
+        width: 100% !important;
+    }
+}

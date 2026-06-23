@@ -40,11 +40,6 @@
                 grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
                 gap: 2rem !important;
             }
-            .synergy-grid {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 2rem !important;
-            }
             .bento-grid {
                 display: grid !important;
                 grid-template-columns: 1fr 1fr !important;
@@ -52,6 +47,13 @@
             }
             .bento-grid .box-large {
                 grid-column: 1 / -1 !important;
+            }
+        }
+        @media (max-width: 992px) {
+            .synergy-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 2rem !important;
             }
             .synergy-content {
                 text-align: center !important;
@@ -63,13 +65,25 @@
             .synergy-title,
             .synergy-desc,
             .section-label-gold { text-align: center !important; }
-            .synergy-features { width: 100% !important; }
-            .syn-feature { text-align: center !important; }
-            .syn-feature h4, .syn-feature p { text-align: center !important; }
+            .synergy-features { 
+                width: fit-content !important; 
+                margin: 0 auto !important;
+            }
+            .syn-feature { text-align: left !important; }
+            .syn-feature h4, .syn-feature p { text-align: left !important; }
             .synergy-visual { width: 100% !important; }
             .synergy-visual img, .scanner-image-wrapper {
                 width: 100% !important;
                 max-width: 100% !important;
+            }
+            .logistics-section .section-label {
+                display: block !important;
+                width: fit-content !important;
+                margin: 0 auto 1.5rem auto !important;
+                text-align: center !important;
+            }
+            .logistics-section h2 {
+                text-align: center !important;
             }
         }
         @media (max-width: 767px) {
